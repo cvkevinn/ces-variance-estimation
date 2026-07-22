@@ -1,0 +1,127 @@
+defaults:
+  rep: 2
+  fd_correlation: 0.8
+
+# QUANTITATIVE TYPE
+quantitative: 
+  frequency: "M"     # Default "M"; can override per variable, i.e., "Q"
+  lag: 1             # Default for this block; can override per variable
+  winsorize_default: true
+  breakdowns:
+    - ["wave"]
+    - ["wave", "a0020"]
+    - ["wave", "a1110_calib_rec"]
+    - ["wave", "b7040_imp_quintiles"]
+  variables:
+    # --- INFLATION ---
+    - name: c1020
+      topic: inflation
+    - name: c1120
+      topic: inflation
+    - name: c1220
+      topic: inflation
+    - name: e2020
+      topic: inflation
+
+    # --- LABOUR ECONOMICS & ECONOMIC GROWTH ---
+    - name: c4020
+      topic: labor_econgrowth
+    - name: c4030
+      topic: labor_econgrowth
+    - name: c4031
+      topic: labor_econgrowth
+    - name: q2300
+      frequency: "Q"
+      lag: 3
+      topic: labor_econgrowth
+    - name: q2350
+      frequency: "Q"
+      lag: 3
+      topic: labor_econgrowth
+    - name: q2390
+      frequency: "Q"
+      lag: 3
+      topic: labor_econgrowth
+
+    # --- INCOME & CONSUMPTION ---
+    - name: c3220
+      topic: income_consumption
+    - name: c6020
+      topic: income_consumption
+      winsorize: false # input data already winsorised
+    - name: c6120
+      topic: income_consumption
+      winsorize: false # input data already winsorised
+
+    # --- HOUSING & CREDIT ---
+    - name: c2120
+      topic: house_credit
+    - name: c5111
+      topic: house_credit
+
+# QUALITATIVE TYPE
+qualitative:
+  frequency: "M"
+  lag: 1
+  suffix_schema_default: ["up", "down", "same", "netdiff"]
+  winsorize_default: false
+  breakdowns:
+    - ["wave"]
+    - ["wave", "a0020"]
+    - ["wave", "a1110_calib_rec"]
+    - ["wave", "b7040_imp_quintiles"]
+  variables:
+    # --- INFLATION ---
+    - name: c1010
+      topic: inflation
+    - name: c1110
+      topic: inflation
+    - name: c1210
+      topic: inflation
+    - name: e2010
+      topic: inflation
+
+    # --- LABOUR ECONOMICS & ECONOMIC GROWTH ---
+    - name: c4010
+      suffix_schema: ["grow", "shrink", "same", "netdiff"]
+      topic: labor_econgrowth
+
+    # --- INCOME & CONSUMPTION ---
+    - name: c3210
+      topic: income_consumption
+    - name: c6010
+      topic: income_consumption
+    - name: c6110
+      topic: income_consumption
+
+    # --- HOUSING & CREDIT ---
+    - name: c2110
+      topic: house_credit
+    - name: c7110
+      suffix_schema: ["harder", "easier", "same", "netdiff"] # "notapplicable"
+      topic: house_credit
+    - name: c7120
+      suffix_schema: ["harder", "easier", "same", "netdiff"] # "notapplicable"
+      topic: house_credit
+    - name: q4010
+      frequency: "Q"
+      lag: 3
+      suffix_schema: ["yes", "no"]
+      topic: house_credit
+
+# PROBIN TYPE
+prob_bin:
+  frequency: "M"
+  lag: 1
+  breakdowns:
+    - ["wave"]
+    - ["wave", "a0020"]
+    - ["wave", "a1110_calib_rec"]
+    - ["wave", "b7040_imp_quintiles"]
+  variables:
+   # --- INFLATION ---
+    - base: c1150
+      topic: inflation
+  columns_from_base:
+    - "_imean_v2"
+    - "_iqr_v2"

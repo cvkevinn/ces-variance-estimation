@@ -1,0 +1,34 @@
+# --- Data: never commit source or output data -------------------------------
+# The pipeline reads internal source tables and writes dissemination files.
+# Only the small documented extracts under ces_edp/sample_data/ are tracked.
+*.csv
+*.xlsx
+*.xls
+*.dta
+*.parquet
+*.pdf
+*.zip
+*.RData
+!ces_edp/sample_data/*.csv
+!ces_edp/tags_edp/ces_tags.xlsx
+
+# Generated output and caches
+cache/
+logs/
+output/
+input/
+
+# --- Environment ------------------------------------------------------------
+.env
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- Editors / OS -----------------------------------------------------------
+.DS_Store
+.Rproj.user
+*.Rhistory
+*~*
