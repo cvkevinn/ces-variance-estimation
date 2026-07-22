@@ -1,6 +1,6 @@
 # CES Aggregates & Variance Pipeline
 
-> ## ⚠️ Important — provenance and data protection
+> ## ⚠️ Important — data protection
 >
 > I developed this code while working in the **European Central Bank**,
 > on the Consumer Expectations Survey (CES) team. It is published here as a **portfolio
