@@ -233,11 +233,6 @@ upload_table(df_out, "prj_ces_production", DST_TABLE)
 
 ## Data protection
 
-I developed this code while working in the European Central Bank, on the Consumer
-Expectations Survey team. It is published here as a portfolio sample of my own work.
-It is not an official ECB product, is not endorsed by the ECB, and any views it
-reflects are my own.
-
 Before publishing, the repository was deliberately sanitised. Concretely:
 
 * **No microdata.** The pipeline operates only on aggregated statistics. No individual
