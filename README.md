@@ -251,9 +251,6 @@ Before publishing, the repository was deliberately sanitised. Concretely:
 * **No credentials and no personal data.** There are no passwords, keys or tokens in
   the code (the original deployment authenticated via Kerberos/SSO), and no user
   names, e-mail addresses or personal paths.
-* **Disclosure control is part of the pipeline itself.** Aggregates based on fewer
-  than 20 observations are dropped before any output is produced, and a `flag_n`
-  reliability marker is attached to small cells.
 
 The pipeline cannot be executed outside the ECB environment: it depends on internal
 connector libraries (`connectors`, `datalabtools`, `ecb-connectors`) and on source
