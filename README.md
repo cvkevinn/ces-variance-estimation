@@ -259,8 +259,5 @@ tables that are not public. The code is published to be read, not run.
 ## Related links
 
 - Original [paper on the Rao-Wu bootstrap methodology](https://www150.statcan.gc.ca/n1/en/catalogue/12-001-X199200214486)
-- [ECB Consumer Expectations Survey](https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/html/index.en.html) — survey overview and methodology
-- [ECB Data Portal](https://data.ecb.europa.eu/data/datasets) — the published aggregates this pipeline produces
-
-The internal ECB methodological note on variance estimation is not linked here, as
-it is not publicly accessible.
+- [ECB Consumer Expectations Survey](https://www.ecb.europa.eu/stats/ecb_surveys/consumer_exp_survey/html/index.en.html) - survey overview and methodology
+- [ECB Data Portal](https://data.ecb.europa.eu/data/datasets) - the published aggregates this pipeline produces
