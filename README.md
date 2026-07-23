@@ -1,37 +1,10 @@
 # CES Aggregates & Variance Pipeline
 
-> ## ⚠️ Important — data protection
->
-> I developed this code while working in the **European Central Bank**,
-> on the Consumer Expectations Survey (CES) team. It is published here as a **portfolio
-> sample of my own work**. It is not an official ECB product, is not endorsed by the
-> ECB, and any views it reflects are my own.
->
-> Before publishing, the repository was deliberately sanitised. Concretely:
->
-> * **No microdata.** The pipeline operates only on aggregated statistics. No
->   individual respondent record, identifier or response is present anywhere in this
->   repository, and none can be reconstructed from it.
-> * **No confidential statistics.** The only data files included are three 50-row
->   extracts under [`ces_edp/sample_data/`](ces_edp/sample_data/), kept so the SDMX
->   code is readable. Every row carries `CONF_STATUS = F` ("free" in the SDMX
->   confidentiality codelist) and corresponds to figures the ECB publishes openly on
->   the [ECB Data Portal](https://data.ecb.europa.eu/data/datasets). The full series
->   are **not** redistributed here — they are linked to at source.
-> * **No internal infrastructure details.** Object-store buckets, server and host
->   names, network drives and mapped-drive paths have been removed and replaced by
->   environment variables. See [`settings.py`](settings.py) and
->   [`.env.example`](.env.example): every such value is a placeholder.
-> * **No credentials and no personal data.** There are no passwords, keys or tokens
->   in the code (the original deployment authenticated via Kerberos/SSO), and no user
->   names, e-mail addresses or personal paths.
-> * **Disclosure control is part of the pipeline itself.** Aggregates based on fewer
->   than 20 observations are dropped before any output is produced, and a `flag_n`
->   reliability marker is attached to small cells.
->
-> The pipeline cannot be executed outside the ECB environment: it depends on internal
-> connector libraries (`connectors`, `datalabtools`, `ecb-connectors`) and on source
-> tables that are not public. The code is published to be **read**, not run.
+> ⚠️ **Data protection.** Code I developed at the **European Central Bank** on the
+> Consumer Expectations Survey, published as a portfolio sample of my own work - not
+> an official ECB product, not endorsed by the ECB. It contains **no microdata**, no
+> credentials and no internal infrastructure details.
+> [What exactly was removed, and what remains ↓](#data-protection)
 
 This project calculates CES aggregates, their variance estimation and significance tests of changes, using the Rao-Wu bootstrap methodology.
 
@@ -257,6 +230,39 @@ upload_table(df_out, "prj_ces_production", DST_TABLE)
 * For any other data derivation, add functions in `data_preparations/_tools_data_prep.py`.
 
 * In case **tags file** needs to be updated, check code in `ces_edp/tags_edp.py`. Remember tags are needed for the EDP so that variables can be grouped by `Economics Topic`.
+
+## Data protection
+
+I developed this code while working in the European Central Bank, on the Consumer
+Expectations Survey team. It is published here as a portfolio sample of my own work.
+It is not an official ECB product, is not endorsed by the ECB, and any views it
+reflects are my own.
+
+Before publishing, the repository was deliberately sanitised. Concretely:
+
+* **No microdata.** The pipeline operates only on aggregated statistics. No individual
+  respondent record, identifier or response is present anywhere in this repository,
+  and none can be reconstructed from it.
+* **No confidential statistics.** The only data files included are three 50-row
+  extracts under [`ces_edp/sample_data/`](ces_edp/sample_data/), kept so the SDMX code
+  is readable. Every row carries `CONF_STATUS = F` ("free" in the SDMX confidentiality
+  codelist) and corresponds to figures the ECB publishes openly on the
+  [ECB Data Portal](https://data.ecb.europa.eu/data/datasets). The full series are
+  **not** redistributed here - they are linked to at source.
+* **No internal infrastructure details.** Object-store buckets, server and host names,
+  network drives and mapped-drive paths have been removed and replaced by environment
+  variables. See [`settings.py`](settings.py) and [`.env.example`](.env.example):
+  every such value is a placeholder.
+* **No credentials and no personal data.** There are no passwords, keys or tokens in
+  the code (the original deployment authenticated via Kerberos/SSO), and no user
+  names, e-mail addresses or personal paths.
+* **Disclosure control is part of the pipeline itself.** Aggregates based on fewer
+  than 20 observations are dropped before any output is produced, and a `flag_n`
+  reliability marker is attached to small cells.
+
+The pipeline cannot be executed outside the ECB environment: it depends on internal
+connector libraries (`connectors`, `datalabtools`, `ecb-connectors`) and on source
+tables that are not public. The code is published to be read, not run.
 
 ## Related links
 
